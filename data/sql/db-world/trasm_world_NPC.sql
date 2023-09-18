@@ -1,10 +1,18 @@
+-- --------------------------------------------------------------------------------------
+-- Transmog NPC
+-- --------------------------------------------------------------------------------------
+
 SET
 @Entry = 190010,
-@Name = "Warpweaver";
+@Name = "Willow";
 DELETE FROM `creature_template` WHERE `entry` = @Entry;
 
 INSERT INTO `creature_template` (`entry`, `modelid1`, `modelid2`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `scale`, `rank`, `dmgschool`, `baseattacktime`, `rangeattacktime`, `unit_class`, `unit_flags`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `AIName`, `MovementType`, `HoverHeight`, `RacialLeader`, `movementId`, `RegenHealth`, `mechanic_immune_mask`, `flags_extra`, `ScriptName`) VALUES
 (@Entry, 19646, 0, @Name, "Transmogrifier", NULL, 0, 80, 80, 2, 35, 1, 1, 0, 0, 2000, 0, 1, 0, 7, 138936390, 0, 0, 0, '', 0, 1, 0, 0, 1, 0, 0, 'npc_transmogrifier');
+
+-- agregando a la shop
+REPLACE  into `creature`(`guid`,`id1`,`id2`,`id3`,`map`,`zoneId`,`areaId`,`spawnMask`,`phaseMask`,`equipment_id`,`position_x`,`position_y`,`position_z`,`orientation`,`spawntimesecs`,`wander_distance`,`currentwaypoint`,`curhealth`,`curmana`,`MovementType`,`npcflag`,`unit_flags`,`dynamicflags`,`ScriptName`,`VerifiedBuild`) values
+(15130075,190010,0,0,1,0,0,1,1,0,-11844.9,-4760.18,14.5251,3.88619,300,0,0,12600,0,0,0,0,0,'',0);  -- agregando en la shop
 
 DELETE FROM `creature_template_locale` WHERE `entry` IN  (@Entry);
 INSERT INTO `creature_template_locale` (`entry`, `locale`, `Name`, `Title`) VALUES
